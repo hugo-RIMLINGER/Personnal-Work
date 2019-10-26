@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block title %}Modifier le profil{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "userSpace/css/formulaire.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="formulaire" style="margin-top: 80px">
+  <h2>Modifier le profil personnel </h2>
+  <!-- définit la fonction vers laquelle les données vont être renvoyées -->
+  <form action="{% url 'modifier_profil' %}" enctype="multipart/form-data" method="post">
+    <fieldset>
+      <!-- pour éviter les hacks -> obligatoire dans les formulaires!-->
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{form.description.id_for_label}}">Dites-en plus sur vous !</label>
+          {{editForm.description}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.avatar.id_for_label}}">Photo de profil</label>
+          {{editForm.avatar}}
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Modifier</button>
+        <hr></hr>
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

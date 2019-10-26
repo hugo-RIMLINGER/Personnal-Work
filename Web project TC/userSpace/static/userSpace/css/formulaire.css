@@ -1,0 +1,8 @@
+#formulaire {
+  margin-top: 10rem;
+}
+
+.erreur {
+  color : red;
+  font-size: 0.5rem;
+}

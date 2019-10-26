@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{%block title %}Profil personnel{% endblock %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "userSpace/css/profil.css" %}"/>
+{% endblock %}
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+{% block content%}
+
+
+<div class="container" style="margin-top: 80px">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Profil Personnel</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <!-- photo de profil -->
+                <div class="col-xs-6 col-sm-4 col-md-8" align="center"> <img alt="Responsive image" src= {{user.postulants.postulant_avatar.url}} class="img-fluid"\> </div>
+                <!-- Infos -->
+                <div class="col-xs-7 col-sm-4 col-md-4">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Pseudo</td>
+                        <td>{{ user.username }}</td>
+                      </tr>
+                      <tr>
+                        <td>Nom</td>
+                        <td>{{ user.last_name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Prénom</td>
+                        <td>{{ user.first_name}}</td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td><a href="mailto:{{user.email}}">{{ user.email}}</a></td>
+                      </tr>
+                      <tr>
+                        <td>Date de naissance</td>
+                        <td>{{user.postulants.postulant_date}}</td>
+                      </tr>
+                        <td>Description</td>
+                        <td>{{user.postulants.postulant_description}}</td>
+                    </tbody>
+                  </table>
+                  <a href="/userSpace/edit" class="btn btn-primary">Modifier</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
