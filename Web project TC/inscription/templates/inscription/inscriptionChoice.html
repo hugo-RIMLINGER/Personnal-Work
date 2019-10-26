@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block title %}Choix du type d'inscription{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "inscription/css/inscriptionChoice.css" %}"/>
+{% endblock %}
+
+
+{% block content %}
+
+<div id="login-toto">
+  <div class="container">
+    <!-- <div class="jumbotron"> -->
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="card" style="width: 90%" id="cardPostulant">
+            <img class="card-img-top" src="{% static "inscription/images/image_postulant.jpg"%}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Formulaire Postulant</h5>
+              <p class="card-text">Votre orientation vous préoccupe et vous souhaitez poser vos questions à des personnes connaissant bien l'école qui vous intéresse ?</p>
+              <a href="formulairePostulant" class="btn btn-primary">Je m'inscris</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <div class="card" style="width: 90%" id="cardIntervenant">
+            <img class="card-img-top" src="{% static "inscription/images/image_intervenant.jpg"%}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Formulaire Intervenant</h5>
+              <p class="card-text">Vous faites partie d'une école et vous souhaitez répondre à des questions la concernant ?<br/>Devenez intervenant !</p>
+              <a href="formulaireIntervenant" class="btn btn-primary">Je m'inscris</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{%static "inscription/js/card.js" %}"></script>
+    <script src="{%static "inscription/js/animation.js" %}"></script>
+{% endblock %}

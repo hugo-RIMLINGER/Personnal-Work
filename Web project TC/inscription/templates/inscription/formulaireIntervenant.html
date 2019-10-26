@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% block title %}Page d'inscription{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "inscription/css/formulaire.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="formulaire">
+  <h2>Formulaire d'inscription intervenant </h2>
+  <!-- définit la fonction vers laquelle les données vont être renvoyées -->
+  <form action="{% url 'get_intervenant_infos' %}" enctype="multipart/form-data" method="post">
+    <fieldset>
+      <!-- pour éviter les hacks -> obligatoire dans les formulaires!-->
+        {% csrf_token %}
+        <div class= "form-group has-error">
+          <label for="{{form.username.id_for_label}}" class= "control-label">username:</label>
+          {{form.username}}
+          {% if usernameCheck == False %}<span class="help-block" style="color:red">ce nom d'utilisateur est déjà pris...</span>{% endif %}
+        </div>
+
+        <div class="form-group">
+          <!-- on récupère l'ID à partir de la variable pour pouvoir la modifier dans les css -->
+          <label for="{{form.nom.id_for_label}}">Nom:</label>
+           <!-- génération du code tels qu'il est défini dans forms.py -->
+          {{form.nom}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.prenom.id_for_label}}">Prenom:</label>
+          {{form.prenom}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.date_naissance.id_for_label}}">Date de naissance:</label>
+          {{form.date_naissance}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.adresse.id_for_label}}">Adresse:</label>
+          {{form.adresse}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.password.id_for_label}}">Password:</label>
+          {{form.password}}
+          {% if checkPassword == False %}<span class="help-block" style="color:red">{{ errorInformation }}</span>{% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{form.password_confirmation.id_for_label}}">Password confirmation:</label>
+          {{form.password_confirmation}}
+          {% if checkPassword == False %}<span class="help-block" style="color:red">{{ errorInformation }}</span>{% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{form.nomEcole.id_for_label}}">Nom de votre école:</label>
+          {{form.nomEcole}}
+          {% if ecoleCheck == False %}<span class="help-block" style="color:red">Malheureusement cette école ne figure pas dans notre base...envoyer nous un mail pour la rajouter!</span>{% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{form.type.id_for_label}}">Type: Professeur | Etudiant | Diplomé </label>
+          {{form.type}}
+          {% if typeCheck == False %}<span class="help-block" style="color:red">Malheureusement cette école ne figure pas dans notre base...envoyer nous un mail pour la rajouter!</span>{% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{form.certificat.id_for_label}}">certificat de scolarité:</label>
+          {{form.certificat}}
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Soumettre le formulaire</button>
+        <hr></hr>
+        {% if inscription %}<p>Le formualire a bien été envoyé, bienvenu parmis nous!</p>{% endif %}
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

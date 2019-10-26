@@ -1,0 +1,57 @@
+#choix{
+  display: flex;
+  justify-content: center;
+}
+
+div.card{
+  /* margin: 2rem 2rem 2rem 2rem; */
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0em;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #e9ecef00;
+  border: none;
+}
+
+#cardPostulant,#cardIntervenant {
+  width : 20rem;
+  height : 35rem;
+}
+
+.card>.card-body {
+  padding-bottom: 1em;
+  background-color: #e9ecefaa;
+}
+
+.card>.card-img-top {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 20px;
+}
+
+ #login-toto .jumbotron {
+	background-color: #e9ecefaa;
+  margin-top: 3em;
+}
+
+#login-toto {
+  padding-top: 2.5em;
+  padding-bottom: 50px;
+}
+
+
+#login-toto>.container>.row {
+  padding-bottom: 0.1em;
+  padding-top: 0.1em;
+  margin-top: 3em;
+}
+
+#login-toto.container {
+  height: 100%;
+}
+
+.card>.card-img-top {
+  border-left: 80;
+  border-right: 80;
+}

@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% block title %}Page d'inscription Postulant{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "inscription/css/formulaire.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="formulaire">
+  <h2>Formulaire d'inscription Postulant </h2>
+  <!-- définit la fonction vers laquelle les données vont être renvoyées -->
+  <form action="{% url 'create_postulant' %}" method="post">
+    <!-- pour éviter les hacks -> obligatoire dans les formulaires!-->
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{profile_postulant.username.id_for_label}}">username:</label>
+        {{profile_postulant.username}}
+
+      </div>
+      <div class="form-group">
+        <!-- on récupère l'ID à partir de la variable pour pouvoir la modifier dans les css -->
+        <label for="{{profile_postulant.nom.id_for_label}}">Nom:</label>
+         <!-- génération du code tels qu'il est défini dans forms.py -->
+        {{profile_postulant.nom}}
+      </div>
+      <div class="form-group">
+        <label for="{{profile_postulant.prenom.id_for_label}}">Prenom:</label>
+        {{profile_postulant.prenom}}
+      </div>
+      <div class="form-group">
+        <label for="{{profile_postulant.date_naissance.id_for_label}}">Date de naissance:</label>
+        {{profile_postulant.date_naissance}}
+      </div>
+      <div class="form-group">
+        <label for="{{profile_postulant.adresse.id_for_label}}">Adresse:</label>
+        {{profile_postulant.adresse}}
+      </div>
+      <div class="form-group">
+        <label for="{{profile_postulant.date_naissance.id_for_label}}">Password:</label>
+        {{profile_postulant.password}}
+
+      </div>
+      <div class="form-group">
+        <label for="{{profile_postulant.password_confirmation.id_for_label}}">Confirmation de mot de passe:</label>
+        {{profile_postulant.password_confirmation}}
+        {% if checkPassword == False %}<span class="help-block" style="color:red">{{ errorInformation }}</span>{% endif %}
+
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Soumettre le formulaire</button>
+      <hr></hr>
+      {% if inscription %}<p>Le formualire a bien été envoyé, bienvenu parmis nous!</p>{% endif %}
+
+  </form>
+</div>
+
+
+
+
+{% endblock %}
