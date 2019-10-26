@@ -1,0 +1,10 @@
+{% block title %}{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static "accueil/css/help.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<iframe src="{% static "accueil/pdf/doctechnique.pdf" %}" width="100%" height="800"></iframe>
+{% endblock %}

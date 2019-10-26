@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block title %}Page de connexion{%endblock%}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static "accueil/css/recuperation.css" %}">
+{% endblock %}
+
+
+{% block content %}
+<div id="login-toto">
+  <div class="container" style="height: 32rem;">
+    <div class="jumbotron">
+      <form action="{% url 'recuperation' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <h1 class="titre" style="color: #1408BD"><strong>Récuperation du mot de passe</strong></h1>
+          <label for="{{recup.adresse.id_for_label}}" id="label">Adresse email :</label>
+          {{recup.adresse}}
+          {% if mailEnvoye == True %}<span class="help-block" style="color:black">Nous avons envoyé votre mot de passe à votre adresse mail !</span>{% endif %}
+          {% if checkMail == False %}<span class="help-block" style="color:red">Addresse mail erronée</span>{% endif %}
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary" id="boutonConnexion">Récupérer le mot de passe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
