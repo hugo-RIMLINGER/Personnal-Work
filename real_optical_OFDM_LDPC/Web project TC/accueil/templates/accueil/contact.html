@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% block title %}Page d'Accueil{%endblock%}
+{% load static %}
+
+{% block link %}
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+<link rel="stylesheet"  href="{% static "accueil/css/accueilVisiteur.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<header class="masthead text-center text-white d-flex" id="hautdepage">
+  <div class="container my-auto">
+    <div class="jumbotron" id="jumbo">
+      <div class="row">
+        <div class="col-lg-10 mx-auto" id="titre">
+          <h1 class="text-uppercase" style="color: #1408BD">
+            <strong>Envoi du message</strong>
+          </h1>
+          {% if envoi %}Votre message a bien été envoyé !{% endif %}
+          <form action="{% url "contact" %}?inter={{inter}}&lyceen={{lyceen}}" method="post">
+            {% csrf_token %}
+            <font color="white">
+            <div class= "form-group has-error">
+              <p><label for="id_sujet" class= "control-label">Sujet :</label> <input id="id_sujet" type="text" name="sujet" maxlength="100" value="Choix Parcoursup " /></p>
+              {% if SujetCheck == False %}<span class="help-block" style="color:red">champs obligatoire</span>{% endif %}
+            </div>
+            <div class= "form-group has-error">
+              <p><label for="id_message" class= "control-label">Message :</label> <textarea id="id_message" rows="5" cols="30%" name="message">Bonjour, je suis interessé par votre formation pouvons nous échanger ?  </textarea></p>
+              {% if MessageCheck == True %}<span class="help-block" style="color:red">champs obligatoire</span>{% endif %}
+            </div>
+            <font color="black">
+            <input type="submit" class="btn btn-primary btn-lg" value="Envoyer" />
+            <hr class="my-4">
+          </form>
+          <div class="col-lg-10 mx-auto">
+            <form action="{% url "accueilVisiteur" %}" method="post" style="margin-top: 50px">
+              {% csrf_token %}
+              <div class="form-group">
+                <!-- on récupère l'ID à partir de la variable pour pouvoir la modifier dans les css -->
+                <!-- génération du code tels qu'il est défini dans forms.py -->
+                {{form.nomEcole}}
+                {% if SearchCheck == True %}<span class="help-block" style="color:blue; font-style:italic;">Cette école ne figure pas dans notre base de donnée...</span>{% endif %}
+              </div>
+              <!-- <input type="submit" class="btn btn-primary btn-lg" value="Envoyer" /> -->
+            </form>
+            <br></br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block contact %}{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block title %}Page d'Accueil{%endblock%}
+{% load static %}
+
+{% block link %}
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+
+<link rel="stylesheet"  href="{% static "accueil/css/accueilVisiteur.css" %}"/>
+{% endblock %}
+
+{% block content %}
+<header class="masthead text-center text-white d-flex">
+
+      <div class="container-fluid">
+
+        <div class="jumbotron">
+          <hr class="my-4">
+          <h1 class="display-4"><font color="black">Choissisez</h1>
+          <p class="lead">Sélectionnez l'intervenants qui vous corresponds ! Bon échange </p>
+
+        </div>
+
+
+
+              {% for inter in data2 %}
+              <div class="card-deck">
+              <div class="card">
+              <div class="row">
+
+                <div class="card-header col-lg-2  col-md-offset-50"><font color="black">{{ inter.user|truncatewords_html:80 }}</li>
+                  <p>   </p>
+                  <div class="col-sm-15 col-md-10">
+                  <img class="img-fluid" alt="Responsive image" src="http://placehold.it/320x320" />
+                  </div>
+                </div>
+                <div class="card-body col-lg-50 col-md-offset-50">
+                  <h5 class="card-title">Ecole : {{inter.intervenant_nomEcole}}</h5>
+                  <p class="card-text"><font color="black">Salut, je suis en 4ème année à l'insa n'hésite pas à me contacter</li></p>
+                  <p
+                  <small class="text-muted">Mail : {{inter.user.email}} </small>
+                </p>
+                  <a  class="btn btn-primary" href="EnvoieMail">Envoyer un message</a>
+                </div>
+
+
+              <hr><font color="black"></hr>
+              </div>
+              </div>
+              </div>
+              <hr class="my-4">
+              {% endfor %}
+
+
+        </div>
+
+</header>
+
+{% endblock %}
+
+{% block contact %}{% endblock %}

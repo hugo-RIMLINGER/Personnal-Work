@@ -1,0 +1,36 @@
+#choix{
+  display: flex;
+  justify-content: center;
+}
+
+div.card{
+  margin: 2rem 2rem 2rem 2rem;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 2em;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: #e9ecef00;
+  border: none;
+
+
+}
+
+.card>.card-body {
+  padding-bottom: 1em;
+  background-color: #e9ecefaa;
+}
+
+.card>.card-img-top {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+#login-toto>.container>.jumbotron {
+	background-color: #e9ecefaa;
+  margin-top: 3em;
+}
+
+#login-toto {
+  padding-top: 2.5em;
+}
